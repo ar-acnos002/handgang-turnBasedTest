@@ -90,8 +90,8 @@ for (var i = 0; i < blueMoveList; i++)
 /// @DnDArgument : "x" "32"
 /// @DnDArgument : "y" "352"
 /// @DnDArgument : "caption" ""Current State: ""
-/// @DnDArgument : "var" "ds_queue_head(obj_battle_manager.battleQueue)"
-draw_text(32, 352, string("Current State: ") + string(ds_queue_head(obj_battle_manager.battleQueue)));
+/// @DnDArgument : "var" "obj_battle_manager.currentState"
+draw_text(32, 352, string("Current State: ") + string(obj_battle_manager.currentState));
 
 /// @DnDAction : YoYo Games.Drawing.Draw_Value
 /// @DnDVersion : 1
@@ -101,3 +101,12 @@ draw_text(32, 352, string("Current State: ") + string(ds_queue_head(obj_battle_m
 /// @DnDArgument : "caption" ""State Queue Size: ""
 /// @DnDArgument : "var" "obj_battle_manager.queueSize"
 draw_text(482, 352, string("State Queue Size: ") + string(obj_battle_manager.queueSize));
+
+/// @DnDAction : YoYo Games.Drawing.Draw_Value
+/// @DnDVersion : 1
+/// @DnDHash : 367BE77D
+/// @DnDArgument : "x" "288"
+/// @DnDArgument : "y" "64"
+/// @DnDArgument : "caption" ""Info: ""
+/// @DnDArgument : "var" "obj_battle_manager.battleMessage"
+draw_text(288, 64, string("Info: ") + string(obj_battle_manager.battleMessage));
