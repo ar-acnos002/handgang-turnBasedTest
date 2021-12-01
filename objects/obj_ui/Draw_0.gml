@@ -24,6 +24,33 @@ draw_text(obj_red.x - obj_red.sprite_width/2, obj_red.y - obj_red.sprite_height,
 /// @DnDArgument : "var" "obj_blue.blueHealth"
 draw_text(obj_blue.x - obj_blue.sprite_width, obj_blue.y - obj_blue.sprite_height, string("Health: ") + string(obj_blue.blueHealth));
 
+/// @DnDAction : YoYo Games.Drawing.Draw_Healthbar
+/// @DnDVersion : 1
+/// @DnDHash : 4A1286A6
+/// @DnDArgument : "x1" "obj_red.x - obj_red.sprite_width/2"
+/// @DnDArgument : "y1" "obj_red.y - obj_red.sprite_height - 32"
+/// @DnDArgument : "x2" "obj_red.x - obj_red.sprite_width/2 + 128"
+/// @DnDArgument : "y2" "obj_red.y - obj_red.sprite_height - 16"
+/// @DnDArgument : "value" "obj_red.redHealth"
+/// @DnDArgument : "barcol" "$FF000000"
+/// @DnDArgument : "mincol" "$FF0000FF"
+/// @DnDArgument : "maxcol" "$FF00FF00"
+draw_healthbar(obj_red.x - obj_red.sprite_width/2, obj_red.y - obj_red.sprite_height - 32, obj_red.x - obj_red.sprite_width/2 + 128, obj_red.y - obj_red.sprite_height - 16, obj_red.redHealth, $FFFFFFFF & $FFFFFF, $FF0000FF & $FFFFFF, $FF00FF00 & $FFFFFF, 0, (($FFFFFFFF>>24) != 0), (($FF000000>>24) != 0));
+
+/// @DnDAction : YoYo Games.Drawing.Draw_Healthbar
+/// @DnDVersion : 1
+/// @DnDHash : 2A806E55
+/// @DnDArgument : "x1" "obj_blue.x + obj_blue.sprite_width/2 - 128"
+/// @DnDArgument : "y1" "obj_blue.y - obj_blue.sprite_height - 32"
+/// @DnDArgument : "x2" "obj_blue.x + obj_blue.sprite_width/2"
+/// @DnDArgument : "y2" "obj_blue.y - obj_blue.sprite_height - 16"
+/// @DnDArgument : "direction" "1"
+/// @DnDArgument : "value" "obj_blue.blueHealth"
+/// @DnDArgument : "barcol" "$FF000000"
+/// @DnDArgument : "mincol" "$FF0000FF"
+/// @DnDArgument : "maxcol" "$FF00FF00"
+draw_healthbar(obj_blue.x + obj_blue.sprite_width/2 - 128, obj_blue.y - obj_blue.sprite_height - 32, obj_blue.x + obj_blue.sprite_width/2, obj_blue.y - obj_blue.sprite_height - 16, obj_blue.blueHealth, $FFFFFFFF & $FFFFFF, $FF0000FF & $FFFFFF, $FF00FF00 & $FFFFFF, 1, (($FFFFFFFF>>24) != 0), (($FF000000>>24) != 0));
+
 /// @DnDAction : YoYo Games.Common.Execute_Code
 /// @DnDVersion : 1
 /// @DnDHash : 267A2246
@@ -56,3 +83,21 @@ for (var i = 0; i < blueMoveList; i++)
 }
 
 //////
+
+/// @DnDAction : YoYo Games.Drawing.Draw_Value
+/// @DnDVersion : 1
+/// @DnDHash : 7A0BC660
+/// @DnDArgument : "x" "32"
+/// @DnDArgument : "y" "352"
+/// @DnDArgument : "caption" ""Current State: ""
+/// @DnDArgument : "var" "ds_queue_head(obj_battle_manager.battleQueue)"
+draw_text(32, 352, string("Current State: ") + string(ds_queue_head(obj_battle_manager.battleQueue)));
+
+/// @DnDAction : YoYo Games.Drawing.Draw_Value
+/// @DnDVersion : 1
+/// @DnDHash : 640ACE7B
+/// @DnDArgument : "x" "482"
+/// @DnDArgument : "y" "352"
+/// @DnDArgument : "caption" ""State Queue Size: ""
+/// @DnDArgument : "var" "obj_battle_manager.queueSize"
+draw_text(482, 352, string("State Queue Size: ") + string(obj_battle_manager.queueSize));
