@@ -51,6 +51,24 @@ draw_healthbar(obj_red.x - obj_red.sprite_width/2, obj_red.y - obj_red.sprite_he
 /// @DnDArgument : "maxcol" "$FF00FF00"
 draw_healthbar(obj_blue.x + obj_blue.sprite_width/2 - 128, obj_blue.y - obj_blue.sprite_height - 32, obj_blue.x + obj_blue.sprite_width/2, obj_blue.y - obj_blue.sprite_height - 16, obj_blue.blueHealth, $FFFFFFFF & $FFFFFF, $FF0000FF & $FFFFFF, $FF00FF00 & $FFFFFF, 1, (($FFFFFFFF>>24) != 0), (($FF000000>>24) != 0));
 
+/// @DnDAction : YoYo Games.Drawing.Draw_Value
+/// @DnDVersion : 1
+/// @DnDHash : 4AB40402
+/// @DnDArgument : "x" "obj_red.x - obj_red.sprite_width*2.5"
+/// @DnDArgument : "y" "obj_red.y"
+/// @DnDArgument : "caption" ""Speed: ""
+/// @DnDArgument : "var" "obj_red.redSpeedStat"
+draw_text(obj_red.x - obj_red.sprite_width*2.5, obj_red.y, string("Speed: ") + string(obj_red.redSpeedStat));
+
+/// @DnDAction : YoYo Games.Drawing.Draw_Value
+/// @DnDVersion : 1
+/// @DnDHash : 074D20BA
+/// @DnDArgument : "x" "obj_blue.x + obj_blue.sprite_width"
+/// @DnDArgument : "y" "obj_blue.y"
+/// @DnDArgument : "caption" ""Speed: ""
+/// @DnDArgument : "var" "obj_blue.blueSpeedStat"
+draw_text(obj_blue.x + obj_blue.sprite_width, obj_blue.y, string("Speed: ") + string(obj_blue.blueSpeedStat));
+
 /// @DnDAction : YoYo Games.Common.Execute_Code
 /// @DnDVersion : 1
 /// @DnDHash : 267A2246
