@@ -123,8 +123,8 @@ draw_text(482, 352, string("State Queue Size: ") + string(obj_battle_manager.que
 /// @DnDAction : YoYo Games.Drawing.Draw_Value
 /// @DnDVersion : 1
 /// @DnDHash : 367BE77D
-/// @DnDArgument : "x" "288"
+/// @DnDArgument : "x" "216"
 /// @DnDArgument : "y" "64"
 /// @DnDArgument : "caption" ""Info: ""
 /// @DnDArgument : "var" "obj_battle_manager.battleMessage"
-draw_text(288, 64, string("Info: ") + string(obj_battle_manager.battleMessage));
+draw_text(216, 64, string("Info: ") + string(obj_battle_manager.battleMessage));
