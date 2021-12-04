@@ -12,8 +12,8 @@ draw_set_alpha(l14182DA2_0 / $ff);
 /// @DnDArgument : "x" "obj_red.x - obj_red.sprite_width/2"
 /// @DnDArgument : "y" "obj_red.y - obj_red.sprite_height"
 /// @DnDArgument : "caption" ""Health: ""
-/// @DnDArgument : "var" "obj_red.redHealth"
-draw_text(obj_red.x - obj_red.sprite_width/2, obj_red.y - obj_red.sprite_height, string("Health: ") + string(obj_red.redHealth));
+/// @DnDArgument : "var" "obj_battle_manager.p1Health"
+draw_text(obj_red.x - obj_red.sprite_width/2, obj_red.y - obj_red.sprite_height, string("Health: ") + string(obj_battle_manager.p1Health));
 
 /// @DnDAction : YoYo Games.Drawing.Draw_Value
 /// @DnDVersion : 1
@@ -21,8 +21,8 @@ draw_text(obj_red.x - obj_red.sprite_width/2, obj_red.y - obj_red.sprite_height,
 /// @DnDArgument : "x" "obj_blue.x - obj_blue.sprite_width"
 /// @DnDArgument : "y" "obj_blue.y - obj_blue.sprite_height"
 /// @DnDArgument : "caption" ""Health: ""
-/// @DnDArgument : "var" "obj_blue.blueHealth"
-draw_text(obj_blue.x - obj_blue.sprite_width, obj_blue.y - obj_blue.sprite_height, string("Health: ") + string(obj_blue.blueHealth));
+/// @DnDArgument : "var" "obj_battle_manager.p2Health"
+draw_text(obj_blue.x - obj_blue.sprite_width, obj_blue.y - obj_blue.sprite_height, string("Health: ") + string(obj_battle_manager.p2Health));
 
 /// @DnDAction : YoYo Games.Drawing.Draw_Healthbar
 /// @DnDVersion : 1
@@ -31,11 +31,11 @@ draw_text(obj_blue.x - obj_blue.sprite_width, obj_blue.y - obj_blue.sprite_heigh
 /// @DnDArgument : "y1" "obj_red.y - obj_red.sprite_height - 32"
 /// @DnDArgument : "x2" "obj_red.x - obj_red.sprite_width/2 + 128"
 /// @DnDArgument : "y2" "obj_red.y - obj_red.sprite_height - 16"
-/// @DnDArgument : "value" "obj_red.redHealth"
+/// @DnDArgument : "value" "obj_battle_manager.p1Health"
 /// @DnDArgument : "barcol" "$FF000000"
 /// @DnDArgument : "mincol" "$FF0000FF"
 /// @DnDArgument : "maxcol" "$FF00FF00"
-draw_healthbar(obj_red.x - obj_red.sprite_width/2, obj_red.y - obj_red.sprite_height - 32, obj_red.x - obj_red.sprite_width/2 + 128, obj_red.y - obj_red.sprite_height - 16, obj_red.redHealth, $FFFFFFFF & $FFFFFF, $FF0000FF & $FFFFFF, $FF00FF00 & $FFFFFF, 0, (($FFFFFFFF>>24) != 0), (($FF000000>>24) != 0));
+draw_healthbar(obj_red.x - obj_red.sprite_width/2, obj_red.y - obj_red.sprite_height - 32, obj_red.x - obj_red.sprite_width/2 + 128, obj_red.y - obj_red.sprite_height - 16, obj_battle_manager.p1Health, $FFFFFFFF & $FFFFFF, $FF0000FF & $FFFFFF, $FF00FF00 & $FFFFFF, 0, (($FFFFFFFF>>24) != 0), (($FF000000>>24) != 0));
 
 /// @DnDAction : YoYo Games.Drawing.Draw_Healthbar
 /// @DnDVersion : 1
@@ -45,11 +45,11 @@ draw_healthbar(obj_red.x - obj_red.sprite_width/2, obj_red.y - obj_red.sprite_he
 /// @DnDArgument : "x2" "obj_blue.x + obj_blue.sprite_width/2"
 /// @DnDArgument : "y2" "obj_blue.y - obj_blue.sprite_height - 16"
 /// @DnDArgument : "direction" "1"
-/// @DnDArgument : "value" "obj_blue.blueHealth"
+/// @DnDArgument : "value" "obj_battle_manager.p2Health"
 /// @DnDArgument : "barcol" "$FF000000"
 /// @DnDArgument : "mincol" "$FF0000FF"
 /// @DnDArgument : "maxcol" "$FF00FF00"
-draw_healthbar(obj_blue.x + obj_blue.sprite_width/2 - 128, obj_blue.y - obj_blue.sprite_height - 32, obj_blue.x + obj_blue.sprite_width/2, obj_blue.y - obj_blue.sprite_height - 16, obj_blue.blueHealth, $FFFFFFFF & $FFFFFF, $FF0000FF & $FFFFFF, $FF00FF00 & $FFFFFF, 1, (($FFFFFFFF>>24) != 0), (($FF000000>>24) != 0));
+draw_healthbar(obj_blue.x + obj_blue.sprite_width/2 - 128, obj_blue.y - obj_blue.sprite_height - 32, obj_blue.x + obj_blue.sprite_width/2, obj_blue.y - obj_blue.sprite_height - 16, obj_battle_manager.p2Health, $FFFFFFFF & $FFFFFF, $FF0000FF & $FFFFFF, $FF00FF00 & $FFFFFF, 1, (($FFFFFFFF>>24) != 0), (($FF000000>>24) != 0));
 
 /// @DnDAction : YoYo Games.Drawing.Draw_Value
 /// @DnDVersion : 1
@@ -57,8 +57,8 @@ draw_healthbar(obj_blue.x + obj_blue.sprite_width/2 - 128, obj_blue.y - obj_blue
 /// @DnDArgument : "x" "obj_red.x - obj_red.sprite_width*2.5"
 /// @DnDArgument : "y" "obj_red.y"
 /// @DnDArgument : "caption" ""Speed: ""
-/// @DnDArgument : "var" "obj_red.redSpeedStat"
-draw_text(obj_red.x - obj_red.sprite_width*2.5, obj_red.y, string("Speed: ") + string(obj_red.redSpeedStat));
+/// @DnDArgument : "var" "obj_battle_manager.p1"
+draw_text(obj_red.x - obj_red.sprite_width*2.5, obj_red.y, string("Speed: ") + string(obj_battle_manager.p1));
 
 /// @DnDAction : YoYo Games.Drawing.Draw_Value
 /// @DnDVersion : 1
@@ -66,8 +66,8 @@ draw_text(obj_red.x - obj_red.sprite_width*2.5, obj_red.y, string("Speed: ") + s
 /// @DnDArgument : "x" "obj_blue.x + obj_blue.sprite_width"
 /// @DnDArgument : "y" "obj_blue.y"
 /// @DnDArgument : "caption" ""Speed: ""
-/// @DnDArgument : "var" "obj_blue.blueSpeedStat"
-draw_text(obj_blue.x + obj_blue.sprite_width, obj_blue.y, string("Speed: ") + string(obj_blue.blueSpeedStat));
+/// @DnDArgument : "var" "obj_battle_manager.p2"
+draw_text(obj_blue.x + obj_blue.sprite_width, obj_blue.y, string("Speed: ") + string(obj_battle_manager.p2));
 
 /// @DnDAction : YoYo Games.Common.Execute_Code
 /// @DnDVersion : 1
@@ -124,7 +124,7 @@ draw_text(482, 352, string("State Queue Size: ") + string(obj_battle_manager.que
 /// @DnDVersion : 1
 /// @DnDHash : 367BE77D
 /// @DnDArgument : "x" "216"
-/// @DnDArgument : "y" "64"
+/// @DnDArgument : "y" "32"
 /// @DnDArgument : "caption" ""Info: ""
 /// @DnDArgument : "var" "obj_battle_manager.battleMessage"
-draw_text(216, 64, string("Info: ") + string(obj_battle_manager.battleMessage));
+draw_text(216, 32, string("Info: ") + string(obj_battle_manager.battleMessage));
