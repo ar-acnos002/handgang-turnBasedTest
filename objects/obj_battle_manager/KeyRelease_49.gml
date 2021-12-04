@@ -1,12 +1,18 @@
 /// @DnDAction : YoYo Games.Common.Execute_Code
 /// @DnDVersion : 1
 /// @DnDHash : 30D4D534
-/// @DnDArgument : "code" "//execute state change on attack$(13_10)$(13_10)if (currentState == BATTLE_PLAYER_TURN)$(13_10){$(13_10)	p1AbilityUsed = obj_red.redMoves[0]$(13_10)	$(13_10)	redType = obj_red.redAffinity$(13_10)	blueSpecies = obj_blue.blueRace$(13_10)	blueType = obj_blue.blueAffinity$(13_10)	$(13_10)	typeMap = ds_map_find_value(obj_data.defenseMultiplier,blueSpecies)$(13_10)	typeList = ds_map_find_value(typeMap, blueType)$(13_10)	offTypeIndex = ds_map_find_value(obj_data.typeIndex, redType)$(13_10)	$(13_10)	defMult = typeList[offTypeIndex]$(13_10)	show_debug_message("Def Mult Value: " + string(defMult))$(13_10)	show_debug_message("Off Type Index Value: " + string(offTypeIndex))$(13_10)	$(13_10)	p1DamageDeal = 7*defMult$(13_10)	$(13_10)	ds_queue_dequeue(battleQueue)$(13_10)}$(13_10)$(13_10)else if (currentState == BATTLE_ENEMY_TURN)$(13_10){$(13_10)	p2AbilityUsed = obj_blue.blueMoves[0]$(13_10)	$(13_10)	blueType = obj_blue.blueAffinity$(13_10)	redSpecies = obj_red.redRace$(13_10)	redType = obj_red.redAffinity$(13_10)	$(13_10)	typeMap = ds_map_find_value(obj_data.defenseMultiplier,redSpecies)$(13_10)	typeList = ds_map_find_value(typeMap, redType)$(13_10)	offTypeIndex = ds_map_find_value(obj_data.typeIndex, blueType)$(13_10)	$(13_10)	defMult = typeList[offTypeIndex]$(13_10)	show_debug_message("Def Mult Value: " + string(defMult))$(13_10)	show_debug_message("Off Type Index Value: " + string(offTypeIndex))$(13_10)	$(13_10)	p2DamageDeal = 6*defMult$(13_10)	$(13_10)	p2StatusDeal = true$(13_10)	$(13_10)	ds_queue_dequeue(battleQueue)$(13_10)}"
+/// @DnDArgument : "code" "//execute state change on attack$(13_10)$(13_10)if (currentState == BATTLE_PLAYER_TURN)$(13_10){$(13_10)	p1AbilityUsed = obj_red.redMoves[0]$(13_10)	p1AbilityType = obj_red.redMovesType[0]$(13_10)	$(13_10)	getMoveSet = ds_map_find_value(obj_data.moveMap, p1AbilityType)$(13_10)	getMoveList = ds_map_find_value(getMoveSet, p1AbilityUsed)$(13_10)	$(13_10)	baseDamage = getMoveList[0]$(13_10)	$(13_10)	redType = obj_red.redAffinity$(13_10)	blueSpecies = obj_blue.blueRace$(13_10)	blueType = obj_blue.blueAffinity$(13_10)	$(13_10)	typeMap = ds_map_find_value(obj_data.defenseMultiplier,blueSpecies)$(13_10)	typeList = ds_map_find_value(typeMap, blueType)$(13_10)	offTypeIndex = ds_map_find_value(obj_data.typeIndex, redType)$(13_10)	$(13_10)	defMult = typeList[offTypeIndex]$(13_10)	show_debug_message("Def Mult Value: " + string(defMult))$(13_10)	show_debug_message("Off Type Index Value: " + string(offTypeIndex))$(13_10)	show_debug_message("Base Damage Value: " + string(baseDamage))$(13_10)	$(13_10)	p1DamageDeal = baseDamage*defMult$(13_10)	show_debug_message("Damage Deal Value: " + string(p1DamageDeal))$(13_10)	$(13_10)	if (getMoveList[1] == true)$(13_10)	{$(13_10)		if (p2StatusEffect != ds_map_find_value(obj_data.dealEffectMap, getMoveList[2]))$(13_10)		{$(13_10)			p1StatusDeal = getMoveList[1]$(13_10)			p1StatusType = getMoveList[2]$(13_10)			p1StatusOperator = getMoveList[3]$(13_10)			p1StatusInt = getMoveList[4]$(13_10)			p1StatusTarget = getMoveList[5]$(13_10)		}$(13_10)	}$(13_10)	$(13_10)	ds_queue_dequeue(battleQueue)$(13_10)}$(13_10)$(13_10)else if (currentState == BATTLE_ENEMY_TURN)$(13_10){$(13_10)	p2AbilityUsed = obj_blue.blueMoves[0]$(13_10)	p2AbilityType = obj_blue.blueMovesType[0]$(13_10)	$(13_10)	getMoveSet = ds_map_find_value(obj_data.moveMap, p2AbilityType)$(13_10)	getMoveList = ds_map_find_value(getMoveSet, p2AbilityUsed)$(13_10)	$(13_10)	baseDamage = getMoveList[0]$(13_10)	$(13_10)	blueType = obj_blue.blueAffinity$(13_10)	redSpecies = obj_red.redRace$(13_10)	redType = obj_red.redAffinity$(13_10)	$(13_10)	typeMap = ds_map_find_value(obj_data.defenseMultiplier,redSpecies)$(13_10)	typeList = ds_map_find_value(typeMap, redType)$(13_10)	offTypeIndex = ds_map_find_value(obj_data.typeIndex, blueType)$(13_10)	$(13_10)	defMult = typeList[offTypeIndex]$(13_10)	show_debug_message("Def Mult Value: " + string(defMult))$(13_10)	show_debug_message("Off Type Index Value: " + string(offTypeIndex))$(13_10)	show_debug_message("Base Damage Value: " + string(baseDamage))$(13_10)	$(13_10)	p2DamageDeal = baseDamage*defMult$(13_10)	show_debug_message("Damage Deal Value: " + string(p2DamageDeal))$(13_10)	$(13_10)	if (getMoveList[1] == true)$(13_10)	{$(13_10)		if (p1StatusEffect != ds_map_find_value(obj_data.dealEffectMap, getMoveList[2]))$(13_10)		{$(13_10)			p2StatusDeal = getMoveList[1]$(13_10)			p2StatusType = getMoveList[2]$(13_10)			p2StatusOperator = getMoveList[3]$(13_10)			p2StatusInt = getMoveList[4]$(13_10)			p2StatusTarget = getMoveList[5]$(13_10)		}$(13_10)	}$(13_10)	$(13_10)	ds_queue_dequeue(battleQueue)$(13_10)}"
 //execute state change on attack
 
 if (currentState == BATTLE_PLAYER_TURN)
 {
 	p1AbilityUsed = obj_red.redMoves[0]
+	p1AbilityType = obj_red.redMovesType[0]
+	
+	getMoveSet = ds_map_find_value(obj_data.moveMap, p1AbilityType)
+	getMoveList = ds_map_find_value(getMoveSet, p1AbilityUsed)
+	
+	baseDamage = getMoveList[0]
 	
 	redType = obj_red.redAffinity
 	blueSpecies = obj_blue.blueRace
@@ -19,8 +25,22 @@ if (currentState == BATTLE_PLAYER_TURN)
 	defMult = typeList[offTypeIndex]
 	show_debug_message("Def Mult Value: " + string(defMult))
 	show_debug_message("Off Type Index Value: " + string(offTypeIndex))
+	show_debug_message("Base Damage Value: " + string(baseDamage))
 	
-	p1DamageDeal = 7*defMult
+	p1DamageDeal = baseDamage*defMult
+	show_debug_message("Damage Deal Value: " + string(p1DamageDeal))
+	
+	if (getMoveList[1] == true)
+	{
+		if (p2StatusEffect != ds_map_find_value(obj_data.dealEffectMap, getMoveList[2]))
+		{
+			p1StatusDeal = getMoveList[1]
+			p1StatusType = getMoveList[2]
+			p1StatusOperator = getMoveList[3]
+			p1StatusInt = getMoveList[4]
+			p1StatusTarget = getMoveList[5]
+		}
+	}
 	
 	ds_queue_dequeue(battleQueue)
 }
@@ -28,6 +48,12 @@ if (currentState == BATTLE_PLAYER_TURN)
 else if (currentState == BATTLE_ENEMY_TURN)
 {
 	p2AbilityUsed = obj_blue.blueMoves[0]
+	p2AbilityType = obj_blue.blueMovesType[0]
+	
+	getMoveSet = ds_map_find_value(obj_data.moveMap, p2AbilityType)
+	getMoveList = ds_map_find_value(getMoveSet, p2AbilityUsed)
+	
+	baseDamage = getMoveList[0]
 	
 	blueType = obj_blue.blueAffinity
 	redSpecies = obj_red.redRace
@@ -40,10 +66,22 @@ else if (currentState == BATTLE_ENEMY_TURN)
 	defMult = typeList[offTypeIndex]
 	show_debug_message("Def Mult Value: " + string(defMult))
 	show_debug_message("Off Type Index Value: " + string(offTypeIndex))
+	show_debug_message("Base Damage Value: " + string(baseDamage))
 	
-	p2DamageDeal = 6*defMult
+	p2DamageDeal = baseDamage*defMult
+	show_debug_message("Damage Deal Value: " + string(p2DamageDeal))
 	
-	p2StatusDeal = true
+	if (getMoveList[1] == true)
+	{
+		if (p1StatusEffect != ds_map_find_value(obj_data.dealEffectMap, getMoveList[2]))
+		{
+			p2StatusDeal = getMoveList[1]
+			p2StatusType = getMoveList[2]
+			p2StatusOperator = getMoveList[3]
+			p2StatusInt = getMoveList[4]
+			p2StatusTarget = getMoveList[5]
+		}
+	}
 	
 	ds_queue_dequeue(battleQueue)
 }
