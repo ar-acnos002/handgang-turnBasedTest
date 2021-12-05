@@ -31,11 +31,11 @@ draw_text(obj_blue.x - obj_blue.sprite_width, obj_blue.y - obj_blue.sprite_heigh
 /// @DnDArgument : "y1" "obj_red.y - obj_red.sprite_height - 32"
 /// @DnDArgument : "x2" "obj_red.x - obj_red.sprite_width/2 + 128"
 /// @DnDArgument : "y2" "obj_red.y - obj_red.sprite_height - 16"
-/// @DnDArgument : "value" "obj_battle_manager.p1Health"
+/// @DnDArgument : "value" "obj_battle_manager.p1HealthBar"
 /// @DnDArgument : "barcol" "$FF000000"
 /// @DnDArgument : "mincol" "$FF0000FF"
 /// @DnDArgument : "maxcol" "$FF00FF00"
-draw_healthbar(obj_red.x - obj_red.sprite_width/2, obj_red.y - obj_red.sprite_height - 32, obj_red.x - obj_red.sprite_width/2 + 128, obj_red.y - obj_red.sprite_height - 16, obj_battle_manager.p1Health, $FFFFFFFF & $FFFFFF, $FF0000FF & $FFFFFF, $FF00FF00 & $FFFFFF, 0, (($FFFFFFFF>>24) != 0), (($FF000000>>24) != 0));
+draw_healthbar(obj_red.x - obj_red.sprite_width/2, obj_red.y - obj_red.sprite_height - 32, obj_red.x - obj_red.sprite_width/2 + 128, obj_red.y - obj_red.sprite_height - 16, obj_battle_manager.p1HealthBar, $FFFFFFFF & $FFFFFF, $FF0000FF & $FFFFFF, $FF00FF00 & $FFFFFF, 0, (($FFFFFFFF>>24) != 0), (($FF000000>>24) != 0));
 
 /// @DnDAction : YoYo Games.Drawing.Draw_Healthbar
 /// @DnDVersion : 1
@@ -45,11 +45,11 @@ draw_healthbar(obj_red.x - obj_red.sprite_width/2, obj_red.y - obj_red.sprite_he
 /// @DnDArgument : "x2" "obj_blue.x + obj_blue.sprite_width/2"
 /// @DnDArgument : "y2" "obj_blue.y - obj_blue.sprite_height - 16"
 /// @DnDArgument : "direction" "1"
-/// @DnDArgument : "value" "obj_battle_manager.p2Health"
+/// @DnDArgument : "value" "obj_battle_manager.p2HealthBar"
 /// @DnDArgument : "barcol" "$FF000000"
 /// @DnDArgument : "mincol" "$FF0000FF"
 /// @DnDArgument : "maxcol" "$FF00FF00"
-draw_healthbar(obj_blue.x + obj_blue.sprite_width/2 - 128, obj_blue.y - obj_blue.sprite_height - 32, obj_blue.x + obj_blue.sprite_width/2, obj_blue.y - obj_blue.sprite_height - 16, obj_battle_manager.p2Health, $FFFFFFFF & $FFFFFF, $FF0000FF & $FFFFFF, $FF00FF00 & $FFFFFF, 1, (($FFFFFFFF>>24) != 0), (($FF000000>>24) != 0));
+draw_healthbar(obj_blue.x + obj_blue.sprite_width/2 - 128, obj_blue.y - obj_blue.sprite_height - 32, obj_blue.x + obj_blue.sprite_width/2, obj_blue.y - obj_blue.sprite_height - 16, obj_battle_manager.p2HealthBar, $FFFFFFFF & $FFFFFF, $FF0000FF & $FFFFFF, $FF00FF00 & $FFFFFF, 1, (($FFFFFFFF>>24) != 0), (($FF000000>>24) != 0));
 
 /// @DnDAction : YoYo Games.Drawing.Draw_Value
 /// @DnDVersion : 1
